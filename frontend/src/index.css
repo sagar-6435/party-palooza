@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Party Palooza — vibrant festive theme */
+    --background: 270 30% 6%;
+    --foreground: 300 20% 95%;
+
+    --card: 270 25% 10%;
+    --card-foreground: 300 20% 95%;
+
+    --popover: 270 25% 10%;
+    --popover-foreground: 300 20% 95%;
+
+    /* Hot pink as primary */
+    --primary: 330 90% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Electric purple as secondary */
+    --secondary: 270 70% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 270 20% 16%;
+    --muted-foreground: 270 15% 65%;
+
+    --accent: 45 100% 55%;
+    --accent-foreground: 270 30% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 270 20% 20%;
+    --input: 270 20% 20%;
+    --ring: 330 90% 60%;
+
+    --radius: 1rem;
+
+    /* Party palette */
+    --gold: 45 100% 55%;
+    --gold-light: 45 100% 70%;
+    --gold-dark: 38 95% 45%;
+    --purple-glow: 270 80% 65%;
+    --purple-deep: 270 50% 12%;
+    --pink: 330 90% 60%;
+    --pink-light: 330 90% 75%;
+    --cyan: 185 90% 55%;
+
+    --sidebar-background: 270 30% 8%;
+    --sidebar-foreground: 300 20% 95%;
+    --sidebar-primary: 330 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 70% 55%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 270 20% 20%;
+    --sidebar-ring: 330 90% 60%;
+
+    --font-display: 'Poppins', 'DM Sans', system-ui, sans-serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-brand: 'Poppins', 'Syncopate', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    background-image:
+      radial-gradient(ellipse at 20% 20%, hsl(270 70% 55% / 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, hsl(330 90% 60% / 0.06) 0%, transparent 50%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  /* Primary gradient: pink → purple */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--pink-light)), hsl(var(--pink)), hsl(var(--purple-glow)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Keep bg-gradient-gold as the main CTA gradient */
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--pink)), hsl(var(--purple-glow)));
+  }
+
+  .bg-gradient-purple {
+    background: linear-gradient(135deg, hsl(var(--purple-deep)), hsl(var(--purple-glow) / 0.4));
+  }
+
+  .bg-gradient-party {
+    background: linear-gradient(135deg, hsl(var(--pink)), hsl(var(--purple-glow)), hsl(var(--cyan)));
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 30px hsl(var(--pink) / 0.35), 0 0 60px hsl(var(--purple-glow) / 0.15);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 40px hsl(var(--purple-glow) / 0.4);
+  }
+
+  .glow-pink {
+    box-shadow: 0 0 30px hsl(var(--pink) / 0.4), 0 0 80px hsl(var(--pink) / 0.1);
+  }
+
+  /* Confetti dot pattern overlay */
+  .confetti-bg {
+    background-image:
+      radial-gradient(circle, hsl(var(--pink) / 0.15) 1px, transparent 1px),
+      radial-gradient(circle, hsl(var(--purple-glow) / 0.1) 1px, transparent 1px);
+    background-size: 40px 40px, 70px 70px;
+    background-position: 0 0, 20px 20px;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
