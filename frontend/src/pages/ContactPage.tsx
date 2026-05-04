@@ -43,47 +43,52 @@ const ContactPage = () => {
         <h1 className="mb-12 text-center font-display text-4xl font-bold text-foreground md:text-5xl">
           Contact <span className="text-gradient-gold">Us</span>
         </h1>
-        <div className="grid gap-8 md:grid-cols-2">
-          {branches.map((branch) => (
-            <div key={branch.id} className="rounded-2xl border border-border bg-card p-10 transition-all hover:border-primary/50 hover:glow-gold">
-              <h3 className="mb-6 font-display text-2xl font-bold text-foreground text-gradient-gold">{branch.name}</h3>
-              <div className="space-y-6 text-sm text-muted-foreground font-body">
-                <div className="space-y-4">
-                  <p className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                    <span className="leading-relaxed">{branch.address}</span>
-                  </p>
-                  <a href={`tel:${branch.phone.replace(/\s/g, "")}`} className="flex items-center gap-3 hover:text-primary transition-colors">
-                    <Phone className="h-5 w-5 text-primary" />
-                    <span>{branch.phone}</span>
-                  </a>
-                  <p className="flex items-center gap-3 hover:text-primary transition-colors">
-                    <Mail className="h-5 w-5 text-primary" />
-                    <span>info@partypalooza.in</span>
-                  </p>
-                </div>
-
-                <div className="pt-6 border-t border-border/50">
-                  <p className="text-xs font-bold uppercase tracking-widest text-foreground mb-4">Connect With Branch</p>
-                  <div className="flex gap-4">
-                    {socials[branch.id]?.instagram && (
-                      <a href={socials[branch.id].instagram} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full border border-border transition-all hover:border-primary hover:text-primary hover:glow-gold">
-                        <Instagram className="h-5 w-5" />
-                      </a>
-                    )}
-                    <a 
-                      href={`https://wa.me/91${(socials[branch.id]?.whatsapp || branch.phone).replace(/\+/g, "").replace(/\s/g, "")}`} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="p-3 rounded-full border border-border transition-all hover:border-[#25D366] hover:text-[#25D366] hover:glow-gold"
-                    >
-                      <MessageCircle className="h-5 w-5" />
+        <div className="flex justify-center">
+          {(() => {
+            const branch = branches[0];
+            if (!branch) return null;
+            const branchSocials = socials[branch.id] || {};
+            return (
+              <div className="w-full max-w-md rounded-2xl border border-primary/30 bg-card p-10 transition-all hover:border-primary/50 hover:glow-pink">
+                <h3 className="mb-6 font-display text-2xl font-bold text-gradient-gold">Party Palooza — Vijayawada</h3>
+                <div className="space-y-6 text-sm text-muted-foreground font-body">
+                  <div className="space-y-4">
+                    <p className="flex items-start gap-3">
+                      <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                      <span className="leading-relaxed">{branch.address}</span>
+                    </p>
+                    <a href={`tel:${branch.phone.replace(/\s/g, "")}`} className="flex items-center gap-3 hover:text-primary transition-colors">
+                      <Phone className="h-5 w-5 text-primary" />
+                      <span>{branch.phone}</span>
                     </a>
+                    <p className="flex items-center gap-3">
+                      <Mail className="h-5 w-5 text-primary" />
+                      <span>info@partypalooza.in</span>
+                    </p>
+                  </div>
+
+                  <div className="pt-6 border-t border-border/50">
+                    <p className="text-xs font-bold uppercase tracking-widest text-foreground mb-4">Connect With Us</p>
+                    <div className="flex gap-4">
+                      {branchSocials.instagram && (
+                        <a href={branchSocials.instagram} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full border border-border transition-all hover:border-primary hover:text-primary hover:glow-pink">
+                          <Instagram className="h-5 w-5" />
+                        </a>
+                      )}
+                      <a
+                        href={`https://wa.me/91${(branchSocials.whatsapp || branch.phone).replace(/\+/g, "").replace(/\s/g, "")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full border border-border transition-all hover:border-[#25D366] hover:text-[#25D366]"
+                      >
+                        <MessageCircle className="h-5 w-5" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })()}
         </div>
       </div>
     </div>

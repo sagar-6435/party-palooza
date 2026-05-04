@@ -82,7 +82,7 @@ const AdminDashboard = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [selectedBranch, setSelectedBranch] = useState<"branch-1" | "branch-2">("branch-1");
+  const [selectedBranch, setSelectedBranch] = useState<string>("branch-1");
 
   const [filter, setFilter] = useState<"all" | "pending" | "paid">("all");
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
@@ -218,7 +218,7 @@ const AdminDashboard = () => {
   // Check for existing token and branch on mount
   useEffect(() => {
     const savedToken = localStorage.getItem("adminToken");
-    const savedBranch = localStorage.getItem("adminBranch") as "branch-1" | "branch-2" | null;
+    const savedBranch = localStorage.getItem("adminBranch") as string | null;
     if (savedToken) {
       setToken(savedToken);
       setIsLoggedIn(true);
@@ -232,7 +232,7 @@ const AdminDashboard = () => {
       setError(null);
       const data = await api.adminLogin(password);
       setToken(data.token);
-      setSelectedBranch(data.branch as "branch-1" | "branch-2");
+      setSelectedBranch(data.branch as string);
       setIsLoggedIn(true);
       setPassword("");
       localStorage.setItem("adminToken", data.token);

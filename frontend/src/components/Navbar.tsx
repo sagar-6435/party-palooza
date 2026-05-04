@@ -48,11 +48,11 @@ const Navbar = () => {
           ))}
           <div className="ml-2 border-l border-border pl-4">
             <a
-              href="tel:+919912710932"
+              href="tel:+919876543210"
               className="flex items-center gap-2 text-[10px] lg:text-xs 3xl:text-lg text-foreground hover:text-primary transition-colors whitespace-nowrap"
             >
               <Phone className="h-3 w-3 text-primary" />
-              <span className="font-semibold opacity-70">Vijayawada:</span>&nbsp;+91 99127 10932
+              <span className="font-semibold opacity-70">Vijayawada:</span>&nbsp;+91 98765 43210
             </a>
           </div>
         </div>
@@ -84,12 +84,12 @@ const Navbar = () => {
           ))}
           <div className="pt-4">
             <a
-              href="tel:+919912710932"
+              href="tel:+919876543210"
               className="flex items-center gap-3 text-sm text-foreground hover:text-primary transition-colors"
             >
               <Phone className="h-4 w-4 text-primary" />
               <span>
-                <span className="font-semibold">Vijayawada:</span> +91 99127 10932
+                <span className="font-semibold">Vijayawada:</span> +91 98765 43210
               </span>
             </a>
           </div>
