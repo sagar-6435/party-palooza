@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import {
   MapPin, Clock, PartyPopper, Cake, Sparkles, Check,
-  CreditCard, ArrowLeft, ArrowRight, Film, User, Calendar, RefreshCw
+  CreditCard, ArrowLeft, ArrowRight, Film, User, Calendar
 } from "lucide-react";
 import { api, API_BASE, Branch, CakeOption, ExtraDecoration } from "../lib/api";
 import { BookingData, INITIAL_BOOKING, DECORATION_PRICE } from "../lib/booking-data";
@@ -478,28 +478,7 @@ const BookingPage = () => {
           </div>
         ) : (
           <>
-            {/* Anniversary Banner */}
-            <div className="mb-8 overflow-hidden rounded-2xl bg-gradient-gold p-[1px] glow-gold animate-pulse-slow">
-              <div className="flex flex-col items-center justify-center gap-2 rounded-[calc(1rem-1px)] bg-card/90 px-4 py-3 text-center md:flex-row md:gap-6">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                    <Sparkles className="h-4 w-4" />
-                  </div>
-                  <span className="font-display text-sm font-bold text-foreground">2nd Anniversary offer</span>
-                </div>
-                <p className="text-xs text-muted-foreground font-body">Discount On Premium Pack</p>
-                <div className="rounded-full bg-primary/10 px-3 py-1 text-[10px] font-bold text-primary border border-primary/20">
-                  Up to 20% OFF
-                </div>
-                <button
-                  onClick={() => reloadPricingData()}
-                  title="Refresh prices in real-time"
-                  className="ml-auto md:ml-0 p-2 rounded-full hover:bg-primary/10 transition-colors"
-                >
-                  <RefreshCw className="h-4 w-4 text-primary" />
-                </button>
-              </div>
-            </div>
+            {/* Anniversary Banner removed */}
 
             {/* Progress */}
             <div className="mb-10 flex items-center justify-between overflow-x-auto pb-2">
@@ -535,56 +514,32 @@ const BookingPage = () => {
                 )}
               </div>
 
-              {/* Step 0: Branch & Service */}
+              {/* Step 0: Branch & Service — pre-selected, shown as confirmation */}
               {step === 0 && (
                 <div className="space-y-6">
                   <div>
-                    <label className="mb-3 block text-sm font-medium text-foreground font-body">Select Branch</label>
-                    <div className="grid gap-4 md:grid-cols-2">
-                      {branches.map((b) => (
-                        <button
-                          key={b.id}
-                          onClick={() => update({ branch: b.id })}
-                          className={`rounded-2xl border-2 p-6 text-left transition-all ${booking.branch === b.id ? "border-primary glow-gold bg-muted shadow-lg" : "border-border hover:border-primary hover:shadow-md"
-                            }`}
-                        >
-                          <div className="flex items-start gap-3 mb-3">
-                            <div className={`p-2 rounded-lg ${booking.branch === b.id ? "bg-primary/20" : "bg-muted"}`}>
-                              <MapPin className={`h-5 w-5 ${booking.branch === b.id ? "text-primary" : "text-muted-foreground"}`} />
-                            </div>
-                            <div>
-                              <p className="font-bold text-foreground text-base font-body">{b.name}</p>
-                              {booking.branch === b.id && <span className="text-[10px] font-semibold text-primary uppercase tracking-wide">Selected ✓</span>}
-                            </div>
-                          </div>
-                          <p className="text-sm text-muted-foreground font-body leading-relaxed">{b.address}</p>
-                          {b.phone && <p className="mt-2 text-xs text-primary font-body font-medium">📞 {b.phone}</p>}
-                        </button>
-                      ))}
+                    <label className="mb-3 block text-sm font-medium text-foreground font-body">Branch</label>
+                    <div className="rounded-2xl border-2 border-primary glow-pink bg-muted p-6">
+                      <div className="flex items-start gap-3">
+                        <div className="p-2 rounded-lg bg-primary/20">
+                          <MapPin className="h-5 w-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-bold text-foreground text-base font-body">Party Palooza — Vijayawada</p>
+                          <span className="text-[10px] font-semibold text-primary uppercase tracking-wide">Selected ✓</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div>
                     <label className="mb-3 block text-sm font-medium text-foreground font-body">Service</label>
-                    <div className="grid gap-3 md:grid-cols-1">
-                      {Object.keys(pricing)
-                        .map((serviceId) => (
-                          <button
-                            key={serviceId}
-                            onClick={() => update({ service: serviceId as any })}
-                            className={`flex items-center gap-3 rounded-xl border p-4 transition-all ${booking.service === serviceId ? "border-primary glow-gold bg-muted" : "border-border hover:border-primary"
-                              }`}
-                          >
-                            <Film className="h-5 w-5 text-primary" />
-                            <div className="text-left">
-                              <span className="font-semibold text-foreground text-sm font-body">{formatServiceName(serviceId)}</span>
-                              <p className="text-[10px] text-muted-foreground font-body">
-                                {serviceId === "premium-pack" 
-                                  ? "Fog entry • Photos • Cake • Theatre • Decoration" 
-                                  : "Best combined experience"}
-                              </p>
-                            </div>
-                          </button>
-                        ))}
+                    <div className="rounded-xl border-2 border-primary glow-pink bg-muted p-4 flex items-center gap-3">
+                      <Film className="h-5 w-5 text-primary" />
+                      <div className="text-left">
+                        <span className="font-semibold text-foreground text-sm font-body">Party Hall + Private Theatre</span>
+                        <p className="text-[10px] text-muted-foreground font-body">Best combined experience</p>
+                      </div>
+                      <span className="ml-auto text-[10px] font-semibold text-primary uppercase tracking-wide">Selected ✓</span>
                     </div>
                   </div>
                 </div>

@@ -91,9 +91,6 @@ const Index = () => {
 
         <div className="container relative z-10 mx-auto px-4 pt-32 pb-12 md:pt-24 md:pb-0">
           <div className="mb-4 flex flex-wrap items-center gap-3 animate-fade-in">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/15 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/30">
-              <Sparkles className="h-3 w-3" /> 🎉 Celebrating 2 Years
-            </span>
             <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground font-body">
               Private Theatre & Party Hall · Vijayawada
             </p>
