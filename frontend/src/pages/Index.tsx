@@ -124,7 +124,7 @@ const Index = () => {
       </section>
 
       {/* Services */}
-      <section id="services" className="py-24">
+      <section id="services" className="py-2">
         <div className="container mx-auto px-4">
           <p className="mb-2 text-center text-xs font-semibold uppercase tracking-[0.3em] text-primary font-body">Our Services</p>
           <h2 className="mb-16 text-center font-display text-4xl font-extrabold text-foreground md:text-5xl">
@@ -168,7 +168,7 @@ const Index = () => {
       </section>
 
       {/* Branches */}
-      <section className="border-t border-border py-24">
+      <section className="border-t border-border py-6">
         <div className="container mx-auto px-4">
           <p className="mb-2 text-center text-xs font-semibold uppercase tracking-[0.3em] text-primary font-body">Locations</p>
           <h2 className="mb-16 text-center font-display text-4xl font-extrabold text-foreground md:text-5xl">
@@ -220,7 +220,7 @@ const Index = () => {
       </section>
 
       {/* SEO Keywords Section */}
-      <section className="py-24 border-t border-border bg-muted/30">
+      <section className="py-6 border-t border-border bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="mb-10 font-display text-3xl font-bold text-foreground">Premium Celebration Venues in Vijayawada</h2>
